@@ -113,10 +113,32 @@ const changeStatus = async ({ headers, id, type, reason }) =>
 const useChangeStatus = (configuration = {}) =>
   useAuthenticatedMutation({ mutationFn: changeStatus, ...configuration });
 
+const changeSubEvents = async ({
+  headers,
+  eventId,
+  subEventIds = [],
+  type,
+  reason,
+}) =>
+  fetchFromApi({
+    path: `/events/${eventId.toString()}/subEvents`,
+    options: {
+      method: 'PATCH',
+      headers,
+      body: JSON.stringify(
+        subEventIds.map((id) => ({ id, status: { type, reason } })),
+      ),
+    },
+  });
+
+const useChangeSubEvents = (configuration = {}) =>
+  useAuthenticatedMutation({ mutationFn: changeSubEvents, ...configuration });
+
 export {
   useGetEventsToModerate,
   useGetEventById,
   useGetEventsByIds,
   useGetCalendarSummary,
   useChangeStatus,
+  useChangeSubEvents,
 };
