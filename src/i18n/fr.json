@@ -136,6 +136,11 @@
     "notifications": "Notifications",
     "time_ago": "Il y a {{time}}"
   },
+  "calendarSummary": {
+    "from": "Du",
+    "till": "au",
+    "at": "à"
+  },
   "offerTypes": {
     "0.0.0.0.0": "Exposition",
     "0.12.0.0.0": "Journée portes ouvertes",
