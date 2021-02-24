@@ -6,6 +6,7 @@ import { Spinner } from '../../../components/publiq-ui/Spinner';
 import { QueryStatus } from '../../../hooks/api/authenticated-query';
 import { StatusFormOnPage } from '../../../components/offerStatus/StatusFormOnPage';
 import { CalendarType } from '../../../constants/CalendarType';
+import { PageWithSelectionTable } from '../../../components/offerStatus/PageWithSelectionTable';
 
 const Status = () => {
   const router = useRouter();
@@ -19,9 +20,13 @@ const Status = () => {
     return <Spinner marginTop={4} />;
   }
 
-  // TODO: replace by multiple view with SelectionTable
   if (event.calendarType === CalendarType.MULTIPLE)
-    return <span>multiple</span>;
+    return (
+      <PageWithSelectionTable
+        event={event}
+        refetchEvent={getEventByIdQuery.refetch}
+      />
+    );
 
   return (
     <StatusFormOnPage
