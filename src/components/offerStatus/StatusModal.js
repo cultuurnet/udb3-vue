@@ -6,8 +6,9 @@ import { Modal, ModalVariants } from '../publiq-ui/Modal';
 import { Stack } from '../publiq-ui/Stack';
 import { ReasonAndTypeForm } from './ReasonAndTypeForm';
 import { OfferType } from '../../constants/OfferType';
+import { Spinner } from '../publiq-ui/Spinner';
 
-const StatusModal = ({ visible, className, onClose, onConfirm }) => {
+const StatusModal = ({ visible, loading, className, onClose, onConfirm }) => {
   const { t } = useTranslation();
 
   const [type, setType] = useState('');
@@ -33,21 +34,26 @@ const StatusModal = ({ visible, className, onClose, onConfirm }) => {
       onClose={onClose}
       confirmButtonDisabled={!type || reason.length > MaxLengthReason}
     >
-      <Stack padding={4}>
-        <ReasonAndTypeForm
-          offerType={OfferType.EVENT}
-          statusType={type}
-          statusReason={reason}
-          onChangeStatusType={(e) => setType(e.target.value)}
-          onInputStatusReason={(e) => setReason(e.target.value)}
-        />
-      </Stack>
+      {loading ? (
+        <Spinner marginY={4} />
+      ) : (
+        <Stack padding={4}>
+          <ReasonAndTypeForm
+            offerType={OfferType.EVENT}
+            statusType={type}
+            statusReason={reason}
+            onChangeStatusType={(e) => setType(e.target.value)}
+            onInputStatusReason={(e) => setReason(e.target.value)}
+          />
+        </Stack>
+      )}
     </Modal>
   );
 };
 
 StatusModal.propTypes = {
   visible: PropTypes.bool,
+  loading: PropTypes.bool,
   className: PropTypes.string,
   onClose: PropTypes.func,
   onConfirm: PropTypes.func,
