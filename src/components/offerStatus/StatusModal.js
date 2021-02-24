@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { MaxLengthReason } from './constants';
 import { Modal, ModalVariants } from '../publiq-ui/Modal';
@@ -7,11 +7,18 @@ import { Stack } from '../publiq-ui/Stack';
 import { ReasonAndTypeForm } from './ReasonAndTypeForm';
 import { OfferType } from '../../constants/OfferType';
 
-const StatusModal = ({ visible, className, onClose }) => {
+const StatusModal = ({ visible, className, onClose, onConfirm }) => {
   const { t } = useTranslation();
 
   const [type, setType] = useState('');
   const [reason, setReason] = useState('');
+
+  useEffect(() => {
+    if (!visible) {
+      setType('');
+      setReason('');
+    }
+  }, [visible]);
 
   return (
     <Modal
@@ -22,9 +29,9 @@ const StatusModal = ({ visible, className, onClose }) => {
       className={className}
       confirmTitle={t('offerStatus.actions.save')}
       cancelTitle={t('offerStatus.actions.close')}
-      onConfirm={() => {}}
+      onConfirm={() => onConfirm(type, reason)}
       onClose={onClose}
-      confirmButtonDisabled={reason.length > MaxLengthReason}
+      confirmButtonDisabled={!type || reason.length > MaxLengthReason}
     >
       <Stack padding={4}>
         <ReasonAndTypeForm
@@ -43,6 +50,7 @@ StatusModal.propTypes = {
   visible: PropTypes.bool,
   className: PropTypes.string,
   onClose: PropTypes.func,
+  onConfirm: PropTypes.func,
 };
 
 export { StatusModal };
