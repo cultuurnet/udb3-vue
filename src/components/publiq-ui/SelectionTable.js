@@ -6,6 +6,8 @@ import { Checkbox } from './Checkbox';
 import { Box, getBoxProps } from './Box';
 import { uniqueId } from 'lodash';
 import { getValueFromTheme } from '../publiq-ui/theme';
+import { Inline } from './Inline';
+import { Button, ButtonVariants } from './Button';
 
 const getValue = getValueFromTheme('selectionTable');
 
@@ -41,7 +43,13 @@ CheckBoxCell.propTypes = {
   row: PropTypes.object,
 };
 
-const SelectionTable = ({ columns, data, onSelectionChanged, ...props }) => {
+const SelectionTable = ({
+  columns,
+  data,
+  onSelectionChanged,
+  actions,
+  ...props
+}) => {
   const {
     getTableProps,
     getTableBodyProps,
@@ -90,6 +98,18 @@ const SelectionTable = ({ columns, data, onSelectionChanged, ...props }) => {
       {...getBoxProps(props)}
     >
       <thead>
+        <Inline as="tr" marginBottom={3}>
+          {actions.map(({ title, onClick, disabled }) => (
+            <Button
+              key={title}
+              variant={ButtonVariants.SECONDARY}
+              onClick={onClick}
+              disabled={disabled}
+            >
+              {title}
+            </Button>
+          ))}
+        </Inline>
         {headerGroups.map((headerGroup, indexHeaderGroup) => (
           <tr key={indexHeaderGroup} {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column, indexHeader) => (
@@ -128,7 +148,12 @@ const SelectionTable = ({ columns, data, onSelectionChanged, ...props }) => {
 SelectionTable.propTypes = {
   columns: PropTypes.array.isRequired,
   data: PropTypes.array.isRequired,
+  actions: PropTypes.node,
   onSelectionChanged: PropTypes.function,
+};
+
+SelectionTable.defaultProps = {
+  actions: [],
 };
 
 export { SelectionTable };

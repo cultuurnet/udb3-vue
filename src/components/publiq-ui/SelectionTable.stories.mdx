@@ -26,11 +26,20 @@ export const data = [
   },
 ];
 
+export const actions = [
+  {
+    title: 'Action 1',
+    onClick: () => console.log('Action 1'),
+    disabled: false,
+  },
+];
+
 <Canvas>
   <Story
     args={{
       columns,
       data,
+      actions,
     }}
     argTypes={{
       onSelectionChanged: { action: 'onSelectionChanged' },
