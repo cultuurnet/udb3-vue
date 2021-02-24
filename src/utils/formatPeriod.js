@@ -21,14 +21,20 @@ const formatPeriod = (startDate, endDate, locale, t) => {
   });
   const formattedTimeStart = format(start, formatTypeTime);
 
-  if (differenceInDays(start, end) === 0) {
-    return capitalize(formattedDateStart);
-  }
-
   const formattedDateEnd = format(end, formatTypeDate, {
     locale: locales[locale],
   });
   const formattedTimeEnd = format(end, formatTypeTime);
+
+  if (differenceInDays(start, end) === 0) {
+    return capitalize(
+      `${formattedDateStart} ${t(
+        'calendarSummary.at',
+      )} ${formattedTimeStart} ${t(
+        'calendarSummary.till',
+      )} ${formattedTimeEnd}`,
+    );
+  }
 
   return `${t('calendarSummary.from')} ${formattedDateStart} ${t(
     'calendarSummary.at',
