@@ -13,7 +13,7 @@ import { parseOfferType } from '../../utils/parseOfferType';
 import { useTranslation } from 'react-i18next';
 import { ReasonAndTypeForm } from './ReasonAndTypeForm';
 
-const StatusFormOnPage = ({ offer, error, useChangeStatus }) => {
+const StatusPageNotMultiple = ({ offer, error, useChangeStatus }) => {
   const { t, i18n } = useTranslation();
   const router = useRouter();
 
@@ -103,10 +103,10 @@ const StatusFormOnPage = ({ offer, error, useChangeStatus }) => {
   );
 };
 
-StatusFormOnPage.propTypes = {
+StatusPageNotMultiple.propTypes = {
   offer: PropTypes.object.isRequired,
   error: PropTypes.object,
   useChangeStatus: PropTypes.func.isRequired,
 };
 
-export { StatusFormOnPage };
+export { StatusPageNotMultiple };

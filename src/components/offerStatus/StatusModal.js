@@ -32,7 +32,9 @@ const StatusModal = ({ visible, loading, className, onClose, onConfirm }) => {
       cancelTitle={t('offerStatus.actions.close')}
       onConfirm={() => onConfirm(type, reason)}
       onClose={onClose}
-      confirmButtonDisabled={!type || reason.length > MaxLengthReason}
+      confirmButtonDisabled={
+        !type || reason.length > MaxLengthReason || loading
+      }
     >
       {loading ? (
         <Spinner marginY={4} />

@@ -10,7 +10,7 @@ import { SelectionTable } from '../publiq-ui/SelectionTable';
 import { Stack } from '../publiq-ui/Stack';
 import { Text } from '../publiq-ui/Text';
 import { getValueFromTheme } from '../publiq-ui/theme';
-import { StatusModal } from '../offerStatus/StatusModal';
+import { StatusModal } from './StatusModal';
 import { OfferStatus } from './constants';
 import { QueryStatus } from '../../hooks/api/authenticated-query';
 
@@ -33,7 +33,7 @@ Status.propTypes = {
   reason: PropTypes.string,
 };
 
-const PageWithSelectionTable = ({ event, refetchEvent }) => {
+const StatusPageMultiple = ({ event, refetchEvent }) => {
   const { t, i18n } = useTranslation();
 
   const eventId = parseOfferId(event['@id']);
@@ -134,8 +134,8 @@ const PageWithSelectionTable = ({ event, refetchEvent }) => {
   ];
 };
 
-PageWithSelectionTable.propTypes = {
+StatusPageMultiple.propTypes = {
   event: PropTypes.object.isRequired,
 };
 
-export { PageWithSelectionTable };
+export { StatusPageMultiple };

@@ -4,9 +4,9 @@ import { useChangeStatus, useGetEventById } from '../../../hooks/api/events';
 import { dehydrate } from 'react-query/hydration';
 import { Spinner } from '../../../components/publiq-ui/Spinner';
 import { QueryStatus } from '../../../hooks/api/authenticated-query';
-import { StatusFormOnPage } from '../../../components/offerStatus/StatusFormOnPage';
+import { StatusPageNotMultiple } from '../../../components/offerStatus/StatusPageNotMultiple';
 import { CalendarType } from '../../../constants/CalendarType';
-import { PageWithSelectionTable } from '../../../components/offerStatus/PageWithSelectionTable';
+import { StatusPageMultiple } from '../../../components/offerStatus/StatusPageMultiple';
 
 const Status = () => {
   const router = useRouter();
@@ -22,14 +22,14 @@ const Status = () => {
 
   if (event.calendarType === CalendarType.MULTIPLE)
     return (
-      <PageWithSelectionTable
+      <StatusPageMultiple
         event={event}
         refetchEvent={getEventByIdQuery.refetch}
       />
     );
 
   return (
-    <StatusFormOnPage
+    <StatusPageNotMultiple
       offer={event}
       error={getEventByIdQuery.error}
       useChangeStatus={useChangeStatus}

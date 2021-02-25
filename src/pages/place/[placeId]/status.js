@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { getApplicationServerSideProps } from '../../../utils/getApplicationServerSideProps';
 import { useChangeStatus, useGetPlaceById } from '../../../hooks/api/places';
 import { dehydrate } from 'react-query/hydration';
-import { StatusFormOnPage } from '../../../components/offerStatus/StatusFormOnPage';
+import { StatusPageNotMultiple } from '../../../components/offerStatus/StatusPageNotMultiple';
 import { QueryStatus } from '../../../hooks/api/authenticated-query';
 import { Spinner } from '../../../components/publiq-ui/Spinner';
 
@@ -16,7 +16,7 @@ const Status = () => {
     return <Spinner marginTop={4} />;
   }
   return (
-    <StatusFormOnPage
+    <StatusPageNotMultiple
       offer={getPlaceByIdQuery.data}
       error={getPlaceByIdQuery.error}
       useChangeStatus={useChangeStatus}
