@@ -99,12 +99,14 @@ const SelectionTable = ({
     >
       <thead>
         <Inline as="tr" marginBottom={3}>
-          {actions.map(({ title, onClick, disabled }) => (
+          {actions.map(({ iconName, title, onClick, disabled }) => (
             <Button
               key={title}
               variant={ButtonVariants.SECONDARY}
               onClick={onClick}
               disabled={disabled}
+              iconName={iconName}
+              spacing={3}
             >
               {title}
             </Button>

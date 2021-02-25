@@ -14,6 +14,7 @@ import { StatusModal } from './StatusModal';
 import { OfferStatus } from './constants';
 import { QueryStatus } from '../../hooks/api/authenticated-query';
 import { camelCase } from 'lodash';
+import { Icons } from '../publiq-ui/Icon';
 
 const getValue = getValueFromTheme('statusPage');
 
@@ -122,6 +123,7 @@ const StatusPageMultiple = ({ event, refetchEvent }) => {
           onSelectionChanged={setSelectedTimeStamps}
           actions={[
             {
+              iconName: Icons.PENCIL_ALT,
               title: t('offerStatus.changeStatus'),
               onClick: () => setIsModalVisible(true),
               disabled: selectedTimeStamps.length === 0,
