@@ -117,6 +117,7 @@ const changeSubEvents = async ({
   headers,
   eventId,
   subEventIds = [],
+  subEvents = [],
   type,
   reason,
 }) =>
@@ -126,7 +127,17 @@ const changeSubEvents = async ({
       method: 'PATCH',
       headers,
       body: JSON.stringify(
-        subEventIds.map((id) => ({ id, status: { type, reason } })),
+        subEventIds.map((id) => ({
+          id,
+          status: {
+            type,
+            reason: {
+              ...(subEvents[id].status.type === type &&
+                subEvents[id].status.reason),
+              ...reason,
+            },
+          },
+        })),
       ),
     },
   });

@@ -67,6 +67,7 @@ const StatusPageMultiple = ({ event, refetchEvent }) => {
     await changeSubEvents({
       eventId,
       subEventIds: selectedSubEventIds,
+      subEvents,
       type,
       reason:
         reason.length > 0 && type !== OfferStatus.AVAILABLE
