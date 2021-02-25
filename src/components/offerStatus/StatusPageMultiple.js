@@ -34,7 +34,7 @@ const Status = ({ type, reason }) => {
 
 Status.propTypes = {
   type: PropTypes.string.isRequired,
-  reason: PropTypes.string,
+  reason: PropTypes.object,
 };
 
 const StatusPageMultiple = ({ event, refetchEvent }) => {
