@@ -113,7 +113,7 @@ const changeStatus = async ({ headers, id, type, reason }) =>
 const useChangeStatus = (configuration = {}) =>
   useAuthenticatedMutation({ mutationFn: changeStatus, ...configuration });
 
-const changeSubEvents = async ({
+const changeStatusSubEvents = async ({
   headers,
   eventId,
   subEventIds = [],
@@ -142,8 +142,11 @@ const changeSubEvents = async ({
     },
   });
 
-const useChangeSubEvents = (configuration = {}) =>
-  useAuthenticatedMutation({ mutationFn: changeSubEvents, ...configuration });
+const useChangeStatusSubEvents = (configuration = {}) =>
+  useAuthenticatedMutation({
+    mutationFn: changeStatusSubEvents,
+    ...configuration,
+  });
 
 export {
   useGetEventsToModerate,
@@ -151,5 +154,5 @@ export {
   useGetEventsByIds,
   useGetCalendarSummary,
   useChangeStatus,
-  useChangeSubEvents,
+  useChangeStatusSubEvents,
 };

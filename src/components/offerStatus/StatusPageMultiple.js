@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useMemo, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { useChangeSubEvents } from '../../hooks/api/events';
+import { useChangeStatusSubEvents } from '../../hooks/api/events';
 import { formatPeriod } from '../../utils/formatPeriod';
 import { parseOfferId } from '../../utils/parseOfferId';
 import { Alert } from '../publiq-ui/Alert';
@@ -57,14 +57,14 @@ const StatusPageMultiple = ({ event, refetchEvent }) => {
   };
 
   const {
-    mutate: changeSubEvents,
+    mutate: changeStatusSubEvents,
     ...changeSubEventsMutation
-  } = useChangeSubEvents({
+  } = useChangeStatusSubEvents({
     onSuccess: handleSuccess,
   });
 
   const handleConfirmChangeStatus = async (type, reason) => {
-    await changeSubEvents({
+    await changeStatusSubEvents({
       eventId,
       subEventIds: selectedSubEventIds,
       subEvents,
