@@ -14,6 +14,7 @@ import { I18nextProvider, useTranslation } from 'react-i18next';
 import i18n from '../i18n';
 import { CookiesProvider, Cookies } from 'react-cookie';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import { Hydrate } from 'react-query/hydration';
 
 import { cloneElement, useEffect } from 'react';
@@ -195,6 +196,7 @@ const App = ({ Component, pageProps, children, showSidebar }) => {
             <Component {...pageProps} />
           )}
         </Layout>
+        <ReactQueryDevtools position="top-right" />
       </ContextProvider>
     </>
   );
