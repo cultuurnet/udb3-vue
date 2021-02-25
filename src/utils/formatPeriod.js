@@ -8,7 +8,6 @@ const locales = {
   fr,
 };
 
-// { t }, startDate, endDate, locale = 'nl'
 const formatPeriod = (startDate, endDate, locale, t) => {
   const start = new Date(startDate);
   const end = new Date(endDate);
