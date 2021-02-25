@@ -88,6 +88,10 @@ const SelectionTable = ({
           padding: 0.75rem;
           vertical-align: top;
           border-top: 1px solid ${getValue('borderColor')};
+
+          :first-child {
+            width: 100px;
+          }
         }
 
         &.table thead th {
