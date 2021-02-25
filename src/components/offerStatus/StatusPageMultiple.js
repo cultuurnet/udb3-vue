@@ -15,6 +15,8 @@ import { OfferStatus } from './constants';
 import { QueryStatus } from '../../hooks/api/authenticated-query';
 import { camelCase } from 'lodash';
 import { Icons } from '../publiq-ui/Icon';
+import { Button, ButtonVariants } from '../publiq-ui/Button';
+import { Link, LinkVariants } from '../publiq-ui/Link';
 
 const getValue = getValueFromTheme('statusPage');
 
@@ -130,6 +132,11 @@ const StatusPageMultiple = ({ event, refetchEvent }) => {
             },
           ]}
         />
+        <Link href="/dashboard" variant={LinkVariants.UNSTYLED} customChildren>
+          <Button variant={ButtonVariants.SUCCESS}>
+            {t('offerStatus.modificationReady')}
+          </Button>
+        </Link>
       </Page.Content>
     </Page>,
     <StatusModal
