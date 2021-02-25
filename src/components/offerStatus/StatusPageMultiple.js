@@ -13,6 +13,7 @@ import { getValueFromTheme } from '../publiq-ui/theme';
 import { StatusModal } from './StatusModal';
 import { OfferStatus } from './constants';
 import { QueryStatus } from '../../hooks/api/authenticated-query';
+import { camelCase } from 'lodash';
 
 const getValue = getValueFromTheme('statusPage');
 
@@ -99,7 +100,12 @@ const StatusPageMultiple = ({ event, refetchEvent }) => {
           t,
         ),
         status: (
-          <Status type={subEvent.status.type} reason={subEvent.status.reason} />
+          <Status
+            type={t(
+              `offerStatus.status.event.${camelCase(subEvent.status.type)}`,
+            )}
+            reason={subEvent.status.reason}
+          />
         ),
       })),
     [subEvents],
