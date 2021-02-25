@@ -98,7 +98,7 @@ const SelectionTable = ({
       {...getBoxProps(props)}
     >
       <thead>
-        <Inline as="tr" marginBottom={3}>
+        <Inline as="div" marginBottom={3}>
           {actions.map(({ iconName, title, onClick, disabled }) => (
             <Button
               key={title}
