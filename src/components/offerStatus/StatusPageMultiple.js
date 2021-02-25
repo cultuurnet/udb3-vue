@@ -44,12 +44,11 @@ const StatusPageMultiple = ({ event, refetchEvent }) => {
   const subEvents = event?.subEvent;
 
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [selectedTimeStamps, setSelectedTimeStamps] = useState([]);
+  const [selectedRows, setSelectedRows] = useState([]);
 
-  const selectedSubEventIds = useMemo(
-    () => selectedTimeStamps.map((timeStamp) => timeStamp.id),
-    [selectedTimeStamps],
-  );
+  const selectedSubEventIds = useMemo(() => selectedRows.map((row) => row.id), [
+    selectedRows,
+  ]);
 
   const handleSuccess = async () => {
     await refetchEvent();
@@ -121,13 +120,13 @@ const StatusPageMultiple = ({ event, refetchEvent }) => {
         <SelectionTable
           columns={columns}
           data={data}
-          onSelectionChanged={setSelectedTimeStamps}
+          onSelectionChanged={setSelectedRows}
           actions={[
             {
               iconName: Icons.PENCIL_ALT,
               title: t('offerStatus.changeStatus'),
               onClick: () => setIsModalVisible(true),
-              disabled: selectedTimeStamps.length === 0,
+              disabled: selectedRows.length === 0,
             },
           ]}
         />
