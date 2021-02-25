@@ -143,6 +143,11 @@
     "till": "tot",
     "at": "om"
   },
+  "selectionTable": {
+    "rowsSelectedCount": "{{count}} rij geselecteerd",
+    "rowsSelectedCount_0": "Geen rijen geselecteerd",
+    "rowsSelectedCount_plural": "{{count}} rijen geselecteerd"
+  },
   "offerTypes": {
     "0.0.0.0.0": "Tentoonstelling",
     "0.12.0.0.0": "Opendeurdag",
