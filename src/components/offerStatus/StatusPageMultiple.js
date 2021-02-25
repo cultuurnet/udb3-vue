@@ -47,7 +47,7 @@ const StatusPageMultiple = ({ event, refetchEvent }) => {
   const [selectedTimeStamps, setSelectedTimeStamps] = useState([]);
 
   const selectedSubEventIds = useMemo(
-    () => selectedTimeStamps.map((timeStamp) => timeStamp.index),
+    () => selectedTimeStamps.map((timeStamp) => timeStamp.id),
     [selectedTimeStamps],
   );
 

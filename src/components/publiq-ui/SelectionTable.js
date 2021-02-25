@@ -72,8 +72,8 @@ const SelectionTable = ({
   useLayoutEffect(() => {
     if (!onSelectionChanged || !selectedFlatRows) return;
     onSelectionChanged(
-      selectedFlatRows.map((row, index) => ({
-        index,
+      selectedFlatRows.map((row) => ({
+        id: parseInt(row.id),
         values: { ...row.values },
       })),
     );
