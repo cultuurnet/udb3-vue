@@ -145,7 +145,6 @@
   },
   "selectionTable": {
     "rowsSelectedCount": "{{count}} rij geselecteerd",
-    "rowsSelectedCount_0": "Geen rijen geselecteerd",
     "rowsSelectedCount_plural": "{{count}} rijen geselecteerd"
   },
   "offerTypes": {

@@ -143,7 +143,6 @@
   },
   "selectionTable": {
     "rowsSelectedCount": "{{count}} ligne sélectionnée",
-    "rowsSelectedCount_0": "Pas de lignes sélectionnées",
     "rowsSelectedCount_plural": "{{count}} lignes sélectionnées"
   },
   "offerTypes": {
