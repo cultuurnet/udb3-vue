@@ -1,8 +1,10 @@
+import '@/styles/global.scss';
+
 import { I18nextProvider } from 'react-i18next';
-import { ThemeProvider } from '../src/components/publiq-ui/ThemeProvider';
-import i18n from '../src/i18n';
-import '../src/styles/global.scss';
-import { GlobalStyle } from '../src/styles/GlobalStyle';
+import i18n from '@/i18n/index';
+
+import { ThemeProvider } from '@/ui/ThemeProvider';
+import { GlobalStyle } from '@/styles/GlobalStyle';
 import { CustomCanvas } from './CustomCanvas';
 
 export const parameters = {
