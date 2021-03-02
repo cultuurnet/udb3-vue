@@ -5,7 +5,7 @@ import { useTable, useRowSelect } from 'react-table';
 import { Checkbox } from './Checkbox';
 import { Box, getBoxProps } from './Box';
 import { uniqueId } from 'lodash';
-import { getValueFromTheme } from '../theme';
+import { getValueFromTheme } from './theme';
 import { Inline } from './Inline';
 import { Button, ButtonVariants } from './Button';
 import { Text } from './Text';
